@@ -1,14 +1,15 @@
 package main
 
-import (
-   // "encoding/json"
-    "log"
-    "net/http"
-    "github.com/gorilla/mux"
-)
+import "os"
 
-// our main function
-func main(){
-    router := mux.NewRouter()
-    log.Fatal(http.ListenAndServe(":8000", router))
+func main() {
+	a := App{}
+	a.Initialize(
+		os.Getenv("APP_DB_HOST"),
+		os.Getenv("APP_DB_PORT"),
+		os.Getenv("APP_DB_USERNAME"),
+		os.Getenv("APP_DB_PASSWORD"),
+		os.Getenv("APP_DB_NAME"))
+
+	a.Run(":8080")
 }
