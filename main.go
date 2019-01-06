@@ -1,15 +1,21 @@
 package main
 
-import "os"
+import (
+	"os"
+
+	"github.com/nattaponra/golangapi/app"
+)
 
 func main() {
-	a := App{}
-	a.Initialize(
+
+	app := app.App{}
+
+	app.Initialize(
 		os.Getenv("APP_DB_HOST"),
 		os.Getenv("APP_DB_PORT"),
 		os.Getenv("APP_DB_USERNAME"),
 		os.Getenv("APP_DB_PASSWORD"),
 		os.Getenv("APP_DB_NAME"))
 
-	a.Run(":8080")
+	app.Run(":8001")
 }
